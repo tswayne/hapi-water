@@ -1,0 +1,22 @@
+{
+  "name": "hapi-water",
+  "version": "1.0.2",
+  "description": "Hapi waterline plugin",
+  "homepage": "https://github.com/tswayne/hapi-water",
+  "repository": "git://github.com/tswayne/hapi-water",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Tyler Swayne",
+  "license": "ISC",
+  "dependencies": {
+    "joi": "^13.1.1",
+    "waterline": "^0.13.1-8"
+  },
+  "peerDependencies": {
+    "hapi": ">=17.0.0"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "devDependencies": {}
+}
