@@ -36,9 +36,12 @@ const pets = await h.models.pet.find()
 module.exports = {
   identity: 'pet',
   datastore: 'default',
+  fetchRecordsOnCreate: true,
   attributes: {
-    id: { type: 'number', autoMigrations: { autoIncrement: true, autoCreatedAt: true, autoUpdatedAt: true } },
-    name: { type: 'string' },    
+    id: { type: 'number', autoMigrations: { autoIncrement: true } },
+    name: { type: 'string' }, 
+    updatedAt: { type: 'string', autoUpdatedAt: true },
+    createdAt: { type: 'string', autoCreatedAt: true },   
   },
   primaryKey: 'id'
 }
