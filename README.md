@@ -58,3 +58,6 @@ module.exports = {
   * host: The database host
   * port: The database port (optional)
 * modelPath: Path to the directory where your models are defined.
+
+## Contributing
+Pull requests or issues welcome!
