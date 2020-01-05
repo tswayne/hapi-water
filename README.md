@@ -21,7 +21,18 @@ const options = {
    password: 'password',
    host: 'localhost'
  },
- modelPath: path.join(__dirname, './models')
+ modelPath: path.join(__dirname, './models'),
+ modelDefaults: {
+   datastore: 'default',
+   fetchRecordsOnCreate: true,
+   fetchRecordsOnUpdate: true,
+   primaryKey: 'id',
+   attributes: {
+     createdAt: { type: 'string', autoCreatedAt: true, },
+     updatedAt: { type: 'string', autoUpdatedAt: true, },
+     id: { type: 'number', autoMigrations: { autoIncrement: true } },
+   },
+ }
 }
 
 await server.register({ plugin: hapiWater, options }, { once: true })
@@ -35,15 +46,9 @@ const pets = await h.models.pet.find()
 // ./model/Pet.js
 module.exports = {
   identity: 'pet',
-  datastore: 'default',
-  fetchRecordsOnCreate: true,
   attributes: {
-    id: { type: 'number', autoMigrations: { autoIncrement: true } },
-    name: { type: 'string' }, 
-    updatedAt: { type: 'string', autoUpdatedAt: true },
-    createdAt: { type: 'string', autoCreatedAt: true },   
-  },
-  primaryKey: 'id'
+    name: { type: 'string' },  
+  }
 }
 ```
 
@@ -58,6 +63,9 @@ module.exports = {
   * host: The database host
   * port: The database port (optional)
 * modelPath: Path to the directory where your models are defined.
+* modelDefaults: Object. Any [model settings](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings) that will apply to all models.   
+  * Great for setting default primaryKey, datastore, fetchRecordsOnUpdate, fetchRecordsOnCreate
+  * Will be overridden by specific model settings
 
 ## Contributing
 Pull requests or issues welcome!
